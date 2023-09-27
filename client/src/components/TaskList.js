@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 //para crear variables o estados utilizamos una funcion llamada useEF
 import { Button, Card, CardContent, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function TaskList() {
   const [ tasks, setTasks] = useState([]);
+
+  /**
+   * Nos permite cargar los datos
+   */
+  const navigate = useNavigate()
 
   const loadTasks = async () => {
     try {
@@ -23,6 +29,7 @@ export default function TaskList() {
   useEffect(() => {
     loadTasks();
   }, []);
+
 
   const handleDelete = async (id) => {
     try {
@@ -64,7 +71,7 @@ export default function TaskList() {
               <Button
                 variant="contained"
                 color="inherit"
-                onClick={() => console.log("edit")}
+                onClick={() =>navigate(`/tasks/${task.id}/edit`) }
               >
                 Editar
               </Button>
