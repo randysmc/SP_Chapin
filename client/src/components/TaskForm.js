@@ -20,8 +20,8 @@ export default function TaskForm() {
    * guardamos los datos
    */
   const [task, setTask] = useState({
-    title: "",
-    description: "",
+    title: '',
+    description: '',
   });
 
   const [loading, setLoading] = useState(false)
@@ -46,7 +46,7 @@ export default function TaskForm() {
       //objeto para indicar hacia donde, datos y formato
       method: "POST",
       body: JSON.stringify(task),
-      headers: {'Content-Type': 'aplication/json'},
+      headers: {'Content-Type': 'application/json'},
     });
 
     const data = await res.json();
@@ -57,9 +57,10 @@ export default function TaskForm() {
 
  
 
-  const handleChange = (e) => {
+  const handleChange = e => {
+    //value = lo que se escribe, y el name el nombre de la var
     //console.log(e.target.name, e.target.value)
-    setTask({ ...task, [e.target.name]: e.target.value });
+    setTask({...task, [e.target.name]: e.target.value });
   };
 
   return (
