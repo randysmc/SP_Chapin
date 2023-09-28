@@ -1,9 +1,8 @@
+const jwt = require("jsonwebtoken");
 const pool = require("../db");
 
 const getAllTasks = async (req, res, next) => {
-  
   try {
-    
     const allTask = await pool.query("SELECT * FROM task");
     console.log(allTask);
     res.json(allTask.rows);
@@ -27,7 +26,6 @@ const getTask = async (req, res, next) => {
 };
 
 const createTask = async (req, res, next) => {
-
   try {
     const { title, description } = req.body;
     const result = await pool.query(
@@ -41,7 +39,6 @@ const createTask = async (req, res, next) => {
 };
 
 const deleteTask = async (req, res, next) => {
-  
   try {
     const { id } = req.params;
     const result = await pool.query(
@@ -57,7 +54,6 @@ const deleteTask = async (req, res, next) => {
 };
 
 const updateTask = async (req, res, next) => {
-  
   try {
     const { id } = req.params;
     const { title, description } = req.body;
@@ -73,10 +69,41 @@ const updateTask = async (req, res, next) => {
   }
 };
 
+
+const login =  async (req, res, next) => {
+  const user = {
+    nombre: "randy",
+    correo: "randysmc@gmail.com",
+    id: 1,
+  }
+  jwt.sign({user}, "secretkey", (err, token)=>{
+    res.json({
+      token
+    })
+  });
+  //res.json(user);
+};
+
+/**
+ * // Authorization: Bearer <token>
+function verifyToken(req, res, next){
+    const bearerHeader = req.headers['authorization']
+    if(typeof bearerHeader !== 'undefined'){
+        const bearerToken = bearerHeader.split(" ")[1];
+        req.token = bearerToken;
+        next();
+    }else{
+      res.sendSatus(403)
+    }
+}
+ * 
+ */
+
 module.exports = {
   getAllTasks,
   getTask,
   createTask,
   deleteTask,
   updateTask,
+  login,
 };

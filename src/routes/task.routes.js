@@ -7,6 +7,7 @@ const {
   createTask,
   deleteTask,
   updateTask,
+  login,
 } = require("../controllers/task.controller");
 
 const router = Router();
@@ -24,5 +25,10 @@ router.delete("/tasks/:id", deleteTask);
 
 router.put("/tasks/:id", updateTask);
 //para exportar la ruta
+
+
+router.post("/api/login", login);
+
+
 
 module.exports = router;

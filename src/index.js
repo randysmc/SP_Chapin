@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken')
 const morgan = require('morgan');
 const cors = require('cors');
 
@@ -6,6 +7,7 @@ const cors = require('cors');
 const taskRoutes = require('./routes/task.routes');
 
 const app = express();
+
 
 app.use(cors()); // modulo para comunicar servidor del backend y fro
 app.use(morgan('dev'));
