@@ -69,19 +69,22 @@ const updateTask = async (req, res, next) => {
   }
 };
 
-
-const login =  async (req, res, next) => {
+const login = async (req, res, next) => {
   const user = {
     nombre: "randy",
     correo: "randysmc@gmail.com",
     id: 1,
-  }
-  jwt.sign({user}, "secretkey", (err, token)=>{
+  };
+  jwt.sign({ user }, "secretkey", (err, token) => {
     res.json({
-      token
-    })
+      token,
+    });
   });
   //res.json(user);
+};
+
+const principal = async (req, res, next) => {
+  res.send("hola mundo");
 };
 
 /**
@@ -106,4 +109,5 @@ module.exports = {
   deleteTask,
   updateTask,
   login,
+  principal,
 };

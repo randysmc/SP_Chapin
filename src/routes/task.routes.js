@@ -8,6 +8,7 @@ const {
   deleteTask,
   updateTask,
   login,
+  principal,
 } = require("../controllers/task.controller");
 
 const router = Router();
@@ -28,6 +29,7 @@ router.put("/tasks/:id", updateTask);
 
 
 router.post("/api/login", login);
+router.get("/principal", principal)
 
 
 

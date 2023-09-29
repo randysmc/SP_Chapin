@@ -11,14 +11,21 @@ export default function Navbar() {
         <Container>
             <Toolbar>
               <Typography variant='h5' sx={{flexGrow:1}}>
-                  
                   <Link to="/" style={{textDecoration:'none', color:'#eee'}}>
-                    PERN Stack
+                    SuperMercado Chapin Market
                   </Link>
               </Typography>
-              <Button variant='contained' color= 'primary' onClick={()=> navigate('/tasks/new')}>
+              <Button variant='contained' color= 'primary' onClick={()=> navigate('/employed/new')}>
                 New Task
               </Button>
+            </Toolbar>
+            <Toolbar>
+              <Typography variant='h5' sx={{flexGrow:0.5}}>
+                  Eso tilin
+              </Typography>
+              <Typography variant='h5' sx={{flexGrow:1}}>
+                  a la mierda tilin
+              </Typography>
             </Toolbar>
         </Container>
       </AppBar>
